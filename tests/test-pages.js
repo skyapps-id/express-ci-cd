@@ -21,7 +21,7 @@ describe('Status and content', function() {
 	describe ('About page', function() {
 		it("status", (done) => {
 			chai.request(app)
-				.get(`/about}`)
+				.get('/about}')
 				.end((err, res) => {
 						res.should.have.status(404);
 						done();
