@@ -4,13 +4,13 @@ pipeline {
   stages {
     stage('Git') {
       steps {
-        git 'https://github.com/skyapps-id/express-ci-cd'
+        git 'https://github.com/skyapps-id/express-ci-cd.git'
       }
     }
     stage('Build') {
       steps {
         sh 'npm install'
-         sh '<<Build Command>>'
+        sh '<<Build Command>>'
       }
     }  
     stage('Test') {
