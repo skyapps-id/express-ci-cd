@@ -9,12 +9,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'npm install'
+        sh 'yarn add .'
       }
     }  
     stage('Test') {
       steps {
-        sh 'npm run test'
+        sh 'yarn run test'
       }
     }
   }
