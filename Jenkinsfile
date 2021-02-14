@@ -4,9 +4,10 @@ pipeline {
     registryCredential = 'docker-hub-credentials' 
     dockerImage = '' 
   }
-  agent {label 'jenkins-jnlp-slave'}
+  agent node
   tools {nodejs 'node'}
   stages {
+    agent {label 'jenkins-jnlp-slave'}
     stage('Git') {
       steps {
         git branch: 'master',
@@ -24,6 +25,9 @@ pipeline {
         sh 'npm run test'
       }
     }
+  }
+  stages {
+    agent {label 'docker-hub'}
     stage('Building our image') { 
       steps { 
         script { 
