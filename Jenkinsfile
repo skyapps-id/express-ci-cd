@@ -1,11 +1,11 @@
 pipeline {
   environment { 
-    registry = "rootduck/express" 
+    registry = 'rootduck/express' 
     registryCredential = 'docker-hub-credentials' 
     dockerImage = '' 
   }
-  agent any
-  tools {nodejs "node"}
+  agent {label 'jenkins-jnlp-slave'}
+  tools {nodejs 'node'}
   stages {
     stage('Git') {
       steps {
@@ -42,7 +42,7 @@ pipeline {
     } 
     stage('Cleaning up') { 
       steps { 
-        sh "docker rmi $registry:$BUILD_NUMBER" 
+        sh 'docker rmi $registry:$BUILD_NUMBER'
       }
     } 
   }
