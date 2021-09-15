@@ -8,9 +8,9 @@ pipeline {
   tools {nodejs 'node'}
   stages {
     stage("Build and test the project") {
-      agent {
+      /* agent {
         label "jenkins-jnlp-slave"
-      }
+      } */
       stages {
         stage('Git') {
           steps {
