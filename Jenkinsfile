@@ -4,7 +4,7 @@ pipeline {
     registryCredential = 'docker-hub-credentials' 
     dockerImage = '' 
   }
-  agent none
+  // agent none
   tools {nodejs 'node'}
   stages {
     stage("Build and test the project") {
