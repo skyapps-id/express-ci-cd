@@ -1,9 +1,4 @@
 pipeline {
-  environment { 
-    registry = 'rootduck/express' 
-    registryCredential = 'docker-hub-credentials' 
-    dockerImage = '' 
-  }
   agent none
   tools {nodejs 'node'}
   stages {
