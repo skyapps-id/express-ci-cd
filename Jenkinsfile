@@ -9,7 +9,6 @@ pipeline {
   stages {
     stage("Build and test the project") {
       agent {
-        // label "jenkins-jnlp-slave"
         label any
       }
       stages {
@@ -29,35 +28,6 @@ pipeline {
             sh 'npm run test'
           }
         }
-      }
-    }
-    stage("Build and push docker hub") {
-      agent {
-        // label "docker-hub"
-        label any
-      }
-      stages {
-        stage('Building our image') { 
-          steps { 
-            script { 
-              dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-            }
-          } 
-        }
-        stage('Deploy our image') { 
-          steps { 
-            script { 
-              docker.withRegistry( '', registryCredential ) { 
-                dockerImage.push() 
-              }
-            } 
-          }
-        } 
-        stage('Cleaning up') { 
-          steps { 
-            sh 'docker rmi $registry:$BUILD_NUMBER'
-          }
-        } 
       }
     }
   }
