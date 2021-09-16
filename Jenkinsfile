@@ -9,7 +9,8 @@ pipeline {
   stages {
     stage("Build and test the project") {
       agent {
-        label "jenkins-jnlp-slave"
+        // label "jenkins-jnlp-slave"
+        label any
       }
       stages {
         stage('Git') {
@@ -32,7 +33,8 @@ pipeline {
     }
     stage("Build and push docker hub") {
       agent {
-        label "docker-hub"
+        // label "docker-hub"
+        label any
       }
       stages {
         stage('Building our image') { 
